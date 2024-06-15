@@ -1,7 +1,7 @@
 from behave import given, when, then
 from selenium.webdriver.common.by import By
 
-@given ('que o usuário acessa o navegador')
+@given('que o usuário acessa o navegador')
 def step_usuario_acessa_navegador(context):
     pass
     
