@@ -1,5 +1,4 @@
 from behave import given, when, then
-from selenium import webdriver
 from pages.cadastro_usuario_page import CadastroUsuarioPage
 from pages.home_page import HomePage
 
@@ -9,7 +8,7 @@ def step_acessar_pagina_cadastro(context):
     pageCadastro.acessar_pagina("/users/sign_up")
     context.pageCadastro = pageCadastro
 
-@when('o usuario informar o email "{email}" valido e a senha "{senha}" com no minimo 6 caracteres')
+@when('o usuario informar o email "{email}" valido, a senha "{senha}", confirmar a senha novamente')
 def step_preencher_campos_cadastro(context, email, senha):
     context.pageCadastro.preencher_dados_cadastro(email, senha)
 
