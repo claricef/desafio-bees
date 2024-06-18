@@ -1,7 +1,15 @@
 from selenium import webdriver
 
+def before_all(context):
+    context.browser = webdriver.Chrome()
+
+def after_all(context):
+    context.browser.quit()
+
 def before_scenario(context, scenario):
-    context.browser = webdriver.Chrome()  # Inicializar o navegador antes de cada cenário
+    # Limpar cookies ou redefinir estado se necessário
+    context.browser.delete_all_cookies()
 
 def after_scenario(context, scenario):
-    context.browser.quit()  # Fechar o navegador após cada cenário
+    # Limpar após cada cenário se necessário
+    pass

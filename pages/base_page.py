@@ -13,6 +13,7 @@ class BasePage:
         return self.driver.find_element(*locator)
 
     def clicar_elemento(self, locator):
+        self.esperar_elemento_aparecer(locator)
         element = self.encontrar_elemento(locator)
         element.click()
 
@@ -29,4 +30,5 @@ class BasePage:
     def esperar_elemento_aparecer(self,locator):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         return element
+  
     
