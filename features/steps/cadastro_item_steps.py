@@ -1,3 +1,4 @@
+import random
 from behave import given, when, then
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
@@ -21,9 +22,13 @@ def step_acessar_pagina_cadastro_item_com_usuario_logado(context):
     context.pageLogin.preencher_login_usuario_cadastrado("namar21086@kernuo.com", "123456")
     context.pageHome.acessar_pagina("/items/new")
 
-@when('o usuario informar nome "{nome}", altura "{altura}", largura "{largura}" e peso "{peso}" do item e clicar no botao create item')
-def step_cadastrar_item(context, nome, altura, largura, peso):
+@when('o usuario informar nome, altura, largura e peso do item e clicar no botao create item')
+def step_cadastrar_item(context):
     initialize_pages(context)
+    nome = "Item" + str(random.randint(1, 1000))
+    altura = random.randint(1, 100)
+    largura = random.randint(1, 100)
+    peso = random.randint(1, 5000)
     context.pageCadastroItem.cadastrar_item(nome, altura, largura, peso)
 
 @then('o usuario deve visualizar a mensagem "{mensagem}" de sucesso no cadastro')

@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 
 class BasePage:
     def __init__(self, driver):
@@ -30,5 +31,10 @@ class BasePage:
     def esperar_elemento_aparecer(self,locator):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         return element
+    
+    def selecionar_elemento(self,locator, nome):
+        select_element = self.encontrar_elemento(locator) 
+        select = Select(select_element)
+        return select.select_by_visible_text(nome)
   
     
