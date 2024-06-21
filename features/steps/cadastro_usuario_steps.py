@@ -1,3 +1,4 @@
+import random
 from behave import given, when, then
 from pages.cadastro_usuario_page import CadastroUsuarioPage
 from pages.home_page import HomePage
@@ -8,8 +9,10 @@ def step_acessar_pagina_cadastro(context):
     pageCadastro.acessar_pagina("/users/sign_up")
     context.pageCadastro = pageCadastro
 
-@when('o usuario informar o email "{email}" valido, a senha "{senha}", confirmar a senha novamente')
-def step_preencher_campos_cadastro(context, email, senha):
+@when('o usuario informar o email, a senha, confirmar a senha novamente')
+def step_preencher_campos_cadastro(context):
+    email ="teste_" + str(random.randint(1, 1000)) + '@gmail.com'
+    senha = "123456"
     context.pageCadastro.preencher_dados_cadastro(email, senha)
 
 @when('o usuario clicar no botao sign up')
